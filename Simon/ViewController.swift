@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     var ButtonPattern = [String]()
     
     var InputIndex = 0
+    var Score = 0
+    var HighScore = 0
     
     // UNIMPLEMENTED
     var MaxPatternLength = 20
@@ -20,6 +22,8 @@ class ViewController: UIViewController {
     // This is for debugging/prototyping purposes only and should be removed in
     // the final build.
     @IBOutlet weak var ButtonPatternLabel: UILabel!
+    @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var HighScoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +54,13 @@ class ViewController: UIViewController {
         
         // If we hit the right button
         if ButtonPattern[InputIndex] == input.description {
+            
+            Score++
+            ScoreLabel.text = Score.description
+            if Score > HighScore {
+                HighScore++
+                HighScoreLabel.text = HighScore.description
+            }
             
             // If we are at the end of the pattern
             if InputIndex == ButtonPattern.count - 1 {
@@ -82,6 +93,10 @@ class ViewController: UIViewController {
         // Reset our input and clear the pattern
         InputIndex = 0
         ButtonPattern.removeAll(keepCapacity: false)
+        
+        Score = 0
+        ScoreLabel.text = "0"
+        HighScoreLabel.text = HighScore.description
         
         // Throw a for loop right here to have the pattern start at any given
         // length.
