@@ -10,37 +10,82 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // Outlet for Label containing the generated button pattern
+    var ButtonPattern = [String]()
+    
+    var InputIndex = 0
+    
     // This is for debugging/prototyping purposes only and should be removed in
     // the final build.
-    // Example: "10211310113"
     @IBOutlet weak var ButtonPatternLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Generate an array of ints (rangeing from 0-3) of length 1
+        // Make our initial button pattern
+        ResetButtonPattern()
         
-        // Each button should increment am InputIndex int and each button should
-        // pass it's 0-3 value into a function.
+    }
+    
+    @IBAction func RedButtonPress(sender: AnyObject) {
+        HandleInputPattern(0)
+    }
+    
+    @IBAction func GreenButtonPress(sender: AnyObject) {
+        HandleInputPattern(1)
+    }
+    
+    @IBAction func YellowButtonPress(sender: AnyObject) {
+        HandleInputPattern(2)
+    }
+    
+    @IBAction func BlueButtonPress(sender: AnyObject) {
+        HandleInputPattern(3)
+    }
+    
+    func HandleInputPattern(input: Int) {
         
-        // That function should check that it's 0-3 value matches the ButtonPattern
-        // array at that index.
+        // If we hit the right button
+        if ButtonPattern[InputIndex] == input.description {
+            
+            // If we are at the end of the pattern
+            if InputIndex == ButtonPattern.count - 1 {
+                
+                // Reset input index
+                InputIndex = 0
+                // Extend ButtonPattern
+                var newIntString = Int(arc4random_uniform(4))
+                ButtonPattern.append(newIntString.description)
+                
+                // Update ButtonPatternLabel
+                ButtonPatternLabel.text! += newIntString.description
+                
+                // Animate Pattern
+                
+            // If we are not at the end of the pattern
+            } else {
+                // Move on to the next button in the pattern
+                InputIndex++
+            }
+            
+        // If we hit the wrong button
+        } else {
+            ResetButtonPattern()
+        }
         
-        // If it matches, proceed to the next index.
-        // If it is index is the same as the length of ButtonPattern, append a new
-        // random interger onto the end of ButtonPattern
+    }
+    
+    func ResetButtonPattern() {
+        // Reset our input and clear the pattern
+        InputIndex = 0
+        ButtonPattern.removeAll(keepCapacity: false)
         
-        // If the numbers don't match, start over from the beginning to start building
-        // a new ButtonPattern.
+        // add an initial button to the pattern
+        var newIntString = Int(arc4random_uniform(4))
+        ButtonPattern.append(newIntString.description)
         
-        // I hope this is a suitable algorithm. I don't have time to implement
-        // this right now, but if anyone has a better way of going about it, feel
-        // free to describe/implement it instead. This just seemed the simplest/
-        // most straightforward.
-        
-        // - Connor Eaves
+        // update the label
+        ButtonPatternLabel.text = ButtonPattern[0]
     }
 
     override func didReceiveMemoryWarning() {
