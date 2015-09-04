@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     
     var InputIndex = 0
     
+    // UNIMPLEMENTED
+    var MaxPatternLength = 20
+    
     // This is for debugging/prototyping purposes only and should be removed in
     // the final build.
     @IBOutlet weak var ButtonPatternLabel: UILabel!
@@ -79,6 +82,9 @@ class ViewController: UIViewController {
         // Reset our input and clear the pattern
         InputIndex = 0
         ButtonPattern.removeAll(keepCapacity: false)
+        
+        // Throw a for loop right here to have the pattern start at any given
+        // length.
         
         // add an initial button to the pattern
         var newIntString = Int(arc4random_uniform(4))
