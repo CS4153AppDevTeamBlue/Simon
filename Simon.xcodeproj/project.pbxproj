@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F64FF021B995F3F0079EE2B /* Simon_Blue.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FEFE1B995F3F0079EE2B /* Simon_Blue.wav */; };
+		6F64FF031B995F3F0079EE2B /* Simon_Green.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FEFF1B995F3F0079EE2B /* Simon_Green.wav */; };
+		6F64FF041B995F3F0079EE2B /* Simon_Red.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FF001B995F3F0079EE2B /* Simon_Red.wav */; };
+		6F64FF051B995F3F0079EE2B /* Simon_Yellow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FF011B995F3F0079EE2B /* Simon_Yellow.wav */; };
 		6FDDCFDA1B9942AC00FD3DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFD91B9942AC00FD3DC9 /* AppDelegate.swift */; };
 		6FDDCFDD1B9942AC00FD3DC9 /* Simon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFDB1B9942AC00FD3DC9 /* Simon.xcdatamodeld */; };
 		6FDDCFDF1B9942AC00FD3DC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFDE1B9942AC00FD3DC9 /* ViewController.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F64FEFE1B995F3F0079EE2B /* Simon_Blue.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Blue.wav; sourceTree = "<group>"; };
+		6F64FEFF1B995F3F0079EE2B /* Simon_Green.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Green.wav; sourceTree = "<group>"; };
+		6F64FF001B995F3F0079EE2B /* Simon_Red.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Red.wav; sourceTree = "<group>"; };
+		6F64FF011B995F3F0079EE2B /* Simon_Yellow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Yellow.wav; sourceTree = "<group>"; };
 		6FDDCFD41B9942AC00FD3DC9 /* Simon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDDCFD81B9942AC00FD3DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FDDCFD91B9942AC00FD3DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +66,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F64FEFD1B995ECA0079EE2B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6F64FEFE1B995F3F0079EE2B /* Simon_Blue.wav */,
+				6F64FEFF1B995F3F0079EE2B /* Simon_Green.wav */,
+				6F64FF001B995F3F0079EE2B /* Simon_Red.wav */,
+				6F64FF011B995F3F0079EE2B /* Simon_Yellow.wav */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		6FDDCFCB1B9942AC00FD3DC9 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +98,7 @@
 		6FDDCFD61B9942AC00FD3DC9 /* Simon */ = {
 			isa = PBXGroup;
 			children = (
+				6F64FEFD1B995ECA0079EE2B /* Audio */,
 				6FDDCFD91B9942AC00FD3DC9 /* AppDelegate.swift */,
 				6FDDCFDE1B9942AC00FD3DC9 /* ViewController.swift */,
 				6FDDCFE01B9942AC00FD3DC9 /* Main.storyboard */,
@@ -198,6 +218,10 @@
 				6FDDCFE21B9942AC00FD3DC9 /* Main.storyboard in Resources */,
 				6FDDCFE71B9942AC00FD3DC9 /* LaunchScreen.xib in Resources */,
 				6FDDCFE41B9942AC00FD3DC9 /* Images.xcassets in Resources */,
+				6F64FF041B995F3F0079EE2B /* Simon_Red.wav in Resources */,
+				6F64FF051B995F3F0079EE2B /* Simon_Yellow.wav in Resources */,
+				6F64FF031B995F3F0079EE2B /* Simon_Green.wav in Resources */,
+				6F64FF021B995F3F0079EE2B /* Simon_Blue.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +437,7 @@
 				6FDDCFF81B9942AC00FD3DC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FDDCFF91B9942AC00FD3DC9 /* Build configuration list for PBXNativeTarget "SimonTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +446,7 @@
 				6FDDCFFB1B9942AC00FD3DC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
