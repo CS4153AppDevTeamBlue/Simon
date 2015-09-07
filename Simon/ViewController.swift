@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     // UNIMPLEMENTED
     var MaxPatternLength = 20
     var currentLength = 12;
-    var audioPlayer = AVAudioPlayer()
+    
     var audioQueue = AVQueuePlayer()
     
     
@@ -43,21 +43,26 @@ class ViewController: UIViewController {
     
     @IBAction func RedButtonPress(sender: AnyObject) {
         
-        
+        audioQueue.removeAllItems()
         ButtonPressed(0)
+        audioQueue.play()
+        
         HandleInputPattern(0)
+        
     }
     
     @IBAction func GreenButtonPress(sender: AnyObject) {
         
         ButtonPressed(1)
         HandleInputPattern(1)
+        audioQueue.play()
     }
     
     @IBAction func YellowButtonPress(sender: AnyObject) {
         
         ButtonPressed(2)
         HandleInputPattern(2)
+        audioQueue.play()
     }
     
     @IBAction func BlueButtonPress(sender: AnyObject) {
@@ -65,6 +70,7 @@ class ViewController: UIViewController {
         
         ButtonPressed(3)
         HandleInputPattern(3)
+        audioQueue.play()
     }
     
     func ButtonPressed(inputIndex: UInt32)
@@ -75,26 +81,26 @@ class ViewController: UIViewController {
             do
             {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Red", withExtension: "wav")!
-                    PlayButtonSound(buttonSoundFile)
+                    LoadButtonSound(buttonSoundFile)
             }
         case 1 :
             do
             {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Green", withExtension: "wav")!
-                    PlayButtonSound(buttonSoundFile)
+                    LoadButtonSound(buttonSoundFile)
             }
             
         case 2 :
             do
             {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
-                    PlayButtonSound(buttonSoundFile)
+                    LoadButtonSound(buttonSoundFile)
             }
         case 3 :
             do
             {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
-                    PlayButtonSound(buttonSoundFile)
+                    LoadButtonSound(buttonSoundFile)
             }
         
         default :
@@ -106,28 +112,12 @@ class ViewController: UIViewController {
         
     }
     
-    func PlayButtonSound(buttonSoundFile: NSURL)
+    func LoadButtonSound(buttonSoundFile: NSURL)
     {
-        
-            do{
-                let audioItem = AVPlayerItem(URL: buttonSoundFile)
-                
-                audioPlayer = try AVAudioPlayer(contentsOfURL: buttonSoundFile, fileTypeHint: "wav")
-                audioQueue.insertItem(audioItem, afterItem: audioItem)
-                audioPlayer.play()
-                
-                //Need to work on timing and/or queuing the sounds
-            }
-                
-            catch
-            {
-                
-            }
-        
-        
-        
-        
-        
+    
+        let audioItem = AVPlayerItem(URL: buttonSoundFile)
+        audioQueue.insertItem(audioItem, afterItem: nil)
+    
     }
     
     func HandleInputPattern(input: UInt32) {
@@ -187,7 +177,7 @@ class ViewController: UIViewController {
             ButtonPattern.append(indexArray.description) //not sure what this is going to do so left it in --K.Angel
             
         }
-        //PlayButtonPattern(&indexArray) Need to figure out the timing on this
+        PlayButtonPattern(&indexArray)
         
         // update the label
         ButtonPatternLabel.text = ButtonPattern[0]
@@ -202,6 +192,9 @@ class ViewController: UIViewController {
         {
             ButtonPressed(someArray[i])
         }
+        
+        audioQueue.play() // plays queue but we may want to refactor this so we can make buttons light up
+    
     }
     
     override func didReceiveMemoryWarning() {
