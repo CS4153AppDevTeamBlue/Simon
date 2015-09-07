@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     // UNIMPLEMENTED
     var MaxPatternLength = 20
     var currentLength = 12;
+    var audioPlayer = AVAudioPlayer()
+    var audioQueue = AVQueuePlayer()
+    
+    
     
     // This is for debugging/prototyping purposes only and should be removed in
     // the final build.
@@ -30,6 +34,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         // Make our initial button pattern
         ResetButtonPattern()
@@ -104,14 +109,25 @@ class ViewController: UIViewController {
     func PlayButtonSound(buttonSoundFile: NSURL)
     {
         
-        do {
-            let buttonBeep = try AVAudioPlayer(contentsOfURL: buttonSoundFile, fileTypeHint: "wav")
-            buttonBeep.play()
-        }
-            
-        catch {
-            //Need to handle error somehow
-        }
+            do{
+                let audioItem = AVPlayerItem(URL: buttonSoundFile)
+                
+                audioPlayer = try AVAudioPlayer(contentsOfURL: buttonSoundFile, fileTypeHint: "wav")
+                audioQueue.insertItem(audioItem, afterItem: audioItem)
+                audioPlayer.play()
+                
+                //Need to work on timing and/or queuing the sounds
+            }
+                
+            catch
+            {
+                
+            }
+        
+        
+        
+        
+        
     }
     
     func HandleInputPattern(input: UInt32) {
@@ -171,6 +187,8 @@ class ViewController: UIViewController {
             ButtonPattern.append(indexArray.description) //not sure what this is going to do so left it in --K.Angel
             
         }
+        //PlayButtonPattern(&indexArray) Need to figure out the timing on this
+        
         // update the label
         ButtonPatternLabel.text = ButtonPattern[0]
     }
