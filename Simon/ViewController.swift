@@ -12,13 +12,12 @@ import AVFoundation
 class ViewController: UIViewController {
     
     var ButtonPattern = [String]()
+    var indexArray: [UInt32] = []
     
     var InputIndex = 0
     var Score = 0
     var HighScore = 0
     
-    // UNIMPLEMENTED
-    var MaxPatternLength = 20
     var currentLength = 12;
     
     var audioQueue = AVQueuePlayer()
@@ -78,36 +77,24 @@ class ViewController: UIViewController {
         switch(inputIndex)
         {
         case 0 :
-            do
-            {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Red", withExtension: "wav")!
                     LoadButtonSound(buttonSoundFile)
-            }
+                    break
         case 1 :
-            do
-            {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Green", withExtension: "wav")!
                     LoadButtonSound(buttonSoundFile)
-            }
-            
+                    break
         case 2 :
-            do
-            {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
                     LoadButtonSound(buttonSoundFile)
-            }
+                    break
         case 3 :
-            do
-            {
                     let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
                     LoadButtonSound(buttonSoundFile)
-            }
-        
+                    break
         default :
-            do
-            {
                     // may need to play error noise
-            }
+                    break
         }
         
     }
@@ -137,14 +124,17 @@ class ViewController: UIViewController {
                 
                 // Reset input index
                 InputIndex = 0
-                // Extend ButtonPattern
-                let newIntString = Int(arc4random_uniform(4))
-                ButtonPattern.append(newIntString.description)
                 
-                // Update ButtonPatternLabel
-                ButtonPatternLabel.text! += newIntString.description
+                // Extend ButtonPattern
+                let newInt = UInt32(arc4random_uniform(4))
+                indexArray.append(newInt)
+                ButtonPattern.append(newInt.description)
+                
+                // update the label
+                ButtonPatternLabel.text? += newInt.description
                 
                 // Animate Pattern
+                PlayButtonPattern(&indexArray)
                 
                 // If we are not at the end of the pattern
             } else {
@@ -167,20 +157,22 @@ class ViewController: UIViewController {
         Score = 0
         ScoreLabel.text = "0"
         HighScoreLabel.text = HighScore.description
-        var indexArray: [UInt32] = []
+        
         
         // Throw a for loop right here to have the pattern start at any given
         // length.
         for(var i = 0; i < currentLength; i++)
         {
             indexArray.append(arc4random_uniform(4))
-            ButtonPattern.append(indexArray.description) //not sure what this is going to do so left it in --K.Angel
+            ButtonPattern.append(indexArray[i].description) //not sure what this is going to do so left it in --K.Angel
+            
+            // update the label
+            ButtonPatternLabel.text? += ButtonPattern[i]
             
         }
         PlayButtonPattern(&indexArray)
         
-        // update the label
-        ButtonPatternLabel.text = ButtonPattern[0]
+        
     }
     
     
