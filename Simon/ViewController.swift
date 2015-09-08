@@ -144,6 +144,22 @@ class ViewController: UIViewController {
             
             // If we hit the wrong button
         } else {
+            //Fire alertview box
+            var alert = UIAlertController(title: "Simon Didn't say that!", message: "You hit the wrong button!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+                switch action.style{
+                case .Default:
+                    print("default")
+                    
+                case .Cancel:
+                    print("cancel")
+                    
+                case .Destructive:
+                    print("destructive")
+                }
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
             ResetButtonPattern()
         }
         
