@@ -152,7 +152,9 @@ class ViewController: UIViewController {
     func ResetButtonPattern() {
         // Reset our input and clear the pattern
         InputIndex = 0
+        ButtonPatternLabel.text = ""
         ButtonPattern.removeAll(keepCapacity: false)
+        indexArray.removeAll(keepCapacity: false)
         
         Score = 0
         ScoreLabel.text = "0"
