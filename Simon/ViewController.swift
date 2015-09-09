@@ -13,12 +13,13 @@ class ViewController: UIViewController {
     
     var ButtonPattern = [String]()
     var indexArray: [UInt32] = []
+    var gameBeingPlayed = false;
     
     var InputIndex = 0
     var Score = 0
     var HighScore = 0
     
-    var currentLength = 12;
+    var currentLength = 1;
     
     var audioQueue = AVQueuePlayer()
     
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ButtonPatternLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var HighScoreLabel: UILabel!
+    @IBOutlet weak var startNewGame: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,40 +38,54 @@ class ViewController: UIViewController {
         
         
         // Make our initial button pattern
-        ResetButtonPattern()
+        //ResetButtonPattern()
         
     }
     
+    @IBAction func StartGameBuittonPress(sender: AnyObject) {
+        gameBeingPlayed = true
+        startNewGame.hidden = true
+        let seconds = 1.0
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.ResetButtonPattern()
+        })
+    }
+    
     @IBAction func RedButtonPress(sender: AnyObject) {
-        
+        if(gameBeingPlayed) {
         audioQueue.removeAllItems()
         ButtonPressed(0)
         audioQueue.play()
         
         HandleInputPattern(0)
+        }
         
     }
     
     @IBAction func GreenButtonPress(sender: AnyObject) {
-        
+        if(gameBeingPlayed) {
         ButtonPressed(1)
         HandleInputPattern(1)
         audioQueue.play()
+        }
     }
     
     @IBAction func YellowButtonPress(sender: AnyObject) {
-        
+        if(gameBeingPlayed) {
         ButtonPressed(2)
         HandleInputPattern(2)
         audioQueue.play()
+        }
     }
     
     @IBAction func BlueButtonPress(sender: AnyObject) {
-        
-        
+        if(gameBeingPlayed) {
         ButtonPressed(3)
         HandleInputPattern(3)
         audioQueue.play()
+        }
     }
     
     func ButtonPressed(inputIndex: UInt32)
@@ -107,34 +123,39 @@ class ViewController: UIViewController {
     
     }
     
+    
+    
     func HandleInputPattern(input: UInt32) {
         
         // If we hit the right button
         if ButtonPattern[InputIndex] == input.description {
             
-            Score++
-            ScoreLabel.text = Score.description
-            if Score > HighScore {
-                HighScore++
-                HighScoreLabel.text = HighScore.description
-            }
-            
             // If we are at the end of the pattern
             if InputIndex == ButtonPattern.count - 1 {
+                let seconds = 1.5
+                let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                 
-                // Reset input index
-                InputIndex = 0
-                
-                // Extend ButtonPattern
-                let newInt = UInt32(arc4random_uniform(4))
-                indexArray.append(newInt)
-                ButtonPattern.append(newInt.description)
-                
-                // update the label
-                ButtonPatternLabel.text? += newInt.description
-                
-                // Animate Pattern
-                PlayButtonPattern(&indexArray)
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    //Increase Score
+                    self.increaseScore()
+                    
+                    // here code perfomed with delay
+                    // Reset input index
+                    self.InputIndex = 0
+                    
+                    // Extend ButtonPattern
+                    let newInt = UInt32(arc4random_uniform(4))
+                    self.indexArray.append(newInt)
+                    self.ButtonPattern.append(newInt.description)
+                    
+                    // update the label
+                    self.ButtonPatternLabel.text? += newInt.description
+                    
+                    // Animate Pattern
+                    self.PlayButtonPattern(&self.indexArray)
+                    
+                })
                 
                 // If we are not at the end of the pattern
             } else {
@@ -145,11 +166,18 @@ class ViewController: UIViewController {
             // If we hit the wrong button
         } else {
             //Fire alertview box
-            var alert = UIAlertController(title: "Simon Didn't say that!", message: "You hit the wrong button!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Simon Didn't say that!", message: "You hit the wrong button!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
                 switch action.style{
                 case .Default:
                     print("default")
+                    
+                    //Reset score and Button Pattern
+                    self.gameBeingPlayed = false
+                    self.startNewGame.hidden = false
+                    self.Score = 0
+                    self.ScoreLabel.text = "0"
+                    //self.ResetButtonPattern()
                     
                 case .Cancel:
                     print("cancel")
@@ -159,10 +187,7 @@ class ViewController: UIViewController {
                 }
             }))
             self.presentViewController(alert, animated: true, completion: nil)
-            
-            ResetButtonPattern()
         }
-        
     }
     
     func ResetButtonPattern() {
@@ -193,8 +218,14 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
+    func increaseScore( ) {
+        Score++
+        ScoreLabel.text = Score.description
+        if Score > HighScore {
+            HighScore++
+            HighScoreLabel.text = HighScore.description
+        }
+    }
     
     func PlayButtonPattern(inout someArray: [UInt32])
     {

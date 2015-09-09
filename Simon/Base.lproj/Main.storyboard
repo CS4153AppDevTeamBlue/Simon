@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -103,6 +104,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Simon Button Blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="g18-Bk-RBS">
                                 <rect key="frame" x="188" y="357" width="171" height="171"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-2b-Osd">
+                                <rect key="frame" x="112" y="103" width="150" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <action selector="StartGameBuittonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qmg-8M-f6s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -111,6 +120,7 @@
                         <outlet property="ButtonPatternLabel" destination="hbb-0o-AP8" id="vmQ-FR-rss"/>
                         <outlet property="HighScoreLabel" destination="n7J-mc-17p" id="Rtq-pN-bTJ"/>
                         <outlet property="ScoreLabel" destination="oxs-yZ-KZP" id="Xcg-t7-I2K"/>
+                        <outlet property="startNewGame" destination="rT1-2b-Osd" id="Ky2-fX-PFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -124,9 +134,4 @@
         <image name="Simon Button Red.png" width="160" height="160"/>
         <image name="Simon Button Yellow.png" width="160" height="160"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
