@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var ButtonPattern = [String]()
     var IndexArray = [UInt32]()
     var GameIsPlaying = false;
+    var ContinuePlaying = false;
     
     var InputIndex = 0
     var Score = 0
@@ -62,7 +63,8 @@ class ViewController: UIViewController {
         
         GameIsPlaying = true
         
-        if let newGameButton = StartNewGameButton {
+        //Taking this out because it doesn't hide the button on press
+        if let _ = StartNewGameButton {
             StartNewGameButton.hidden = true
         }
         
@@ -186,29 +188,33 @@ class ViewController: UIViewController {
                 
                 IncreaseScore(1)
                 
-                let seconds = 1.5
-                let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                //Check if won?
+                if( Score < 13 || ContinuePlaying) {
                 
-                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    let seconds = 1.5
+                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     
-                        // here code perfomed with delay
-                        // Reset input index
-                        self.InputIndex = 0
+                            // here code perfomed with delay
+                            // Reset input index
+                            self.InputIndex = 0
                     
-                        // Extend ButtonPattern
-                        let newInt = UInt32(arc4random_uniform(4))
-                        self.IndexArray.append(newInt)
-                        self.ButtonPattern.append(newInt.description)
+                            // Extend ButtonPattern
+                            let newInt = UInt32(arc4random_uniform(4))
+                            self.IndexArray.append(newInt)
+                            self.ButtonPattern.append(newInt.description)
                     
-                        // update the label
-                        self.ButtonPatternLabel.text? += newInt.description
+                            // update the label
+                            self.ButtonPatternLabel.text? += newInt.description
                     
-                        // Animate Pattern
-                        self.PlayButtonPattern(&self.IndexArray)
+                            // Animate Pattern
+                            self.PlayButtonPattern(&self.IndexArray)
                     
-                    }
-                )
+                        }
+                    )
+                }
                 
                 // If we are not at the end of the pattern
             } else {
@@ -285,6 +291,69 @@ class ViewController: UIViewController {
         if Score > HighScore {
             HighScore++
             HighScoreLabel.text = HighScore.description
+        }
+        
+        if( Score == 13) {
+            //You won!, Keep Playing?
+            let alert = UIAlertController(title: "You Won!", message: "Continue Playing?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { action in
+                switch action.style{
+                case .Default:
+                    print("default")
+                    
+                    //Wait then add number and continue playing!
+                    
+                    self.ContinuePlaying = true
+                    
+                    let seconds = 1.5
+                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        
+                        // here code perfomed with delay
+                        // Reset input index
+                        self.InputIndex = 0
+                        
+                        // Extend ButtonPattern
+                        let newInt = UInt32(arc4random_uniform(4))
+                        self.IndexArray.append(newInt)
+                        self.ButtonPattern.append(newInt.description)
+                        
+                        // update the label
+                        self.ButtonPatternLabel.text? += newInt.description
+                        
+                        // Animate Pattern
+                        self.PlayButtonPattern(&self.IndexArray)
+                        
+                        }
+                    )
+                
+                case .Cancel:
+                    print("cancel")
+                    
+                case .Destructive:
+                    print("destructive")
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
+                switch action.style{
+                case .Default:
+                    print("default - No")
+                    
+                    self.GameIsPlaying = false
+                    self.StartNewGameButton.hidden = false
+                    self.Score = 0
+                    self.ScoreLabel.text = "0"
+                case .Cancel:
+                    print("cancel - No")
+                case .Destructive:
+                    print("destructive - No")
+                }
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+
         }
         
     }
