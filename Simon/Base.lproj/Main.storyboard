@@ -81,16 +81,6 @@
                                     <action selector="RedButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MM2-QH-g93"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-2b-Osd">
-                                <rect key="frame" x="0.0" y="43" width="175" height="51"/>
-                                <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="40"/>
-                                <state key="normal" title="Start" backgroundImage="StartButton.png">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="StartGameBuittonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qmg-8M-f6s"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbb-0o-AP8" userLabel="Button Pattern Label">
                                 <rect key="frame" x="146" y="638" width="213" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -127,9 +117,20 @@
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-2b-Osd">
+                                <rect key="frame" x="0.0" y="49" width="175" height="51"/>
+                                <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="40"/>
+                                <state key="normal" title="Start" backgroundImage="StartButton.png">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartGameBuittonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qmg-8M-f6s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ButtonPatternLabel" destination="hbb-0o-AP8" id="vmQ-FR-rss"/>
