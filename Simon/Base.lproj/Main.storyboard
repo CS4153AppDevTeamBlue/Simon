@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A282a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Lato-SemiboldItalic.ttf">
@@ -28,17 +28,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7W-OG-XRj" userLabel="Divider Vertical">
                                 <rect key="frame" x="176" y="145" width="23" height="375"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.92156862745098034" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELm-KO-c7F" userLabel="Divider Horizontal">
                                 <rect key="frame" x="0.0" y="321" width="375" height="23"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.92156862750000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ScoreBanner.png" translatesAutoresizingMaskIntoConstraints="NO" id="mW7-nI-EuH">
                                 <rect key="frame" x="50" y="562" width="275" height="56"/>
+                                <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7j-wu-Wku" userLabel="Button Blue">
                                 <rect key="frame" x="199" y="344" width="176" height="176"/>
+                                <animations/>
                                 <state key="normal" image="Blue.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +54,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32r-wH-dVF" userLabel="Button Yellow">
                                 <rect key="frame" x="0.0" y="344" width="176" height="176"/>
+                                <animations/>
                                 <state key="normal" image="Yellow.png">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,19 +64,9 @@
                                     <action selector="YellowButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Aaa-S4-C7B"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxO-JW-l0G" userLabel="Button Green">
-                                <rect key="frame" x="0.0" y="145" width="176" height="176"/>
-                                <state key="normal" image="Green.png">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="GreenPressed.png"/>
-                                <connections>
-                                    <action selector="GreenButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ejk-8f-c71"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYA-76-qCW" userLabel="Button Red">
                                 <rect key="frame" x="199" y="145" width="176" height="176"/>
+                                <animations/>
                                 <state key="normal" image="Red.png">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,6 +78,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-2b-Osd">
                                 <rect key="frame" x="0.0" y="43" width="175" height="51"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="40"/>
                                 <state key="normal" title="Start" backgroundImage="StartButton.png">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,41 +89,63 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbb-0o-AP8" userLabel="Button Pattern Label">
                                 <rect key="frame" x="146" y="638" width="213" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxs-yZ-KZP" userLabel="Score Label">
                                 <rect key="frame" x="158" y="562" width="131" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnn-Js-51W" userLabel="High Score Label Indicator">
                                 <rect key="frame" x="89" y="589" width="110" height="27"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Button Pattern: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-qe-Luz" userLabel="Button Pattern Indicator">
                                 <rect key="frame" x="16" y="638" width="122" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-pN-zYB" userLabel="Score Label Indicator">
                                 <rect key="frame" x="89" y="562" width="61" height="27"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-mc-17p" userLabel="High Score Label">
                                 <rect key="frame" x="207" y="591" width="82" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxO-JW-l0G" userLabel="Button Green">
+                                <rect key="frame" x="0.0" y="145" width="176" height="176"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration" identifier="greenButton">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <state key="normal" image="Green.png">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="GreenPressed.png"/>
+                                <connections>
+                                    <action selector="GreenButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="E2T-p2-DWm"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -136,6 +154,10 @@
                         <outlet property="HighScoreLabel" destination="n7J-mc-17p" id="Rtq-pN-bTJ"/>
                         <outlet property="ScoreLabel" destination="oxs-yZ-KZP" id="Xcg-t7-I2K"/>
                         <outlet property="StartNewGameButton" destination="rT1-2b-Osd" id="sML-L4-jji"/>
+                        <outlet property="blueButton" destination="A7j-wu-Wku" id="Kzv-LM-bGs"/>
+                        <outlet property="greenButton" destination="bxO-JW-l0G" id="1MK-iu-vqb"/>
+                        <outlet property="redButton" destination="wYA-76-qCW" id="pQ9-RJ-Nfc"/>
+                        <outlet property="yellowButton" destination="32r-wH-dVF" id="s8x-Kt-VTL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -144,15 +166,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Blue.png" width="176" height="176"/>
-        <image name="BluePressed.png" width="176" height="176"/>
-        <image name="Green.png" width="176" height="176"/>
-        <image name="GreenPressed.png" width="176" height="176"/>
-        <image name="Red.png" width="176" height="176"/>
-        <image name="RedPressed.png" width="176" height="176"/>
-        <image name="ScoreBanner.png" width="275" height="55"/>
-        <image name="StartButton.png" width="175" height="51"/>
-        <image name="Yellow.png" width="176" height="176"/>
-        <image name="YellowPressed.png" width="176" height="176"/>
+        <image name="Blue.png" width="352" height="352"/>
+        <image name="BluePressed.png" width="352" height="352"/>
+        <image name="Green.png" width="352" height="352"/>
+        <image name="GreenPressed.png" width="352" height="352"/>
+        <image name="Red.png" width="352" height="352"/>
+        <image name="RedPressed.png" width="352" height="352"/>
+        <image name="ScoreBanner.png" width="550" height="111"/>
+        <image name="StartButton.png" width="350" height="102"/>
+        <image name="Yellow.png" width="352" height="352"/>
+        <image name="YellowPressed.png" width="352" height="352"/>
     </resources>
 </document>

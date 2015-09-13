@@ -14,19 +14,54 @@ class ViewController: UIViewController {
     
     // ===== Public variables and constants ===== //
     
+    @IBOutlet weak var greenButton: UIButton!
+    @IBOutlet weak var redButton: UIButton!
+    @IBOutlet weak var yellowButton: UIButton!
+    @IBOutlet weak var blueButton: UIButton!
+    @IBOutlet weak var ButtonPatternLabel: UILabel!
+    @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var HighScoreLabel: UILabel!
+    @IBOutlet weak var StartNewGameButton: UIButton!
     
-    var ButtonPattern = [String]()
-    var IndexArray = [UInt32]()
+    //var ButtonPattern = [String]()
+    var IndexArray = [UInt32]()  //may be able to get rid of this
     var GameIsPlaying = false;
     var ContinuePlaying = false;
     
     var InputIndex = 0
+    var SimonSequenceIndex = 0
     var Score = 0
     var HighScore = 0
     
     let InitialPatternLength = 1;
     
-    let PatternAudioPlayer = AVQueuePlayer()
+    let PatternAudioPlayer = AVQueuePlayer() // may be able to get rid of this
+    var aVPlayer : AVPlayer!
+    var AudioPatternArray = [AudioIndexPair()]
+    
+    
+    let GreenDefault = UIImage(named: "Green.png")!
+    let GreenPressed = UIImage(named: "GreenPressed.png")!
+    
+    let RedDefault = UIImage(named: "Red.png")!
+    let RedPressed = UIImage(named: "RedPressed.png")!
+    
+    let YellowDefault = UIImage(named: "Yellow.png")!
+    let YellowPressed = UIImage(named: "YellowPressed.png")!
+    
+    let BlueDefault = UIImage(named: "Blue.png")!
+    let BluePressed = UIImage(named: "BluePressed.png")!
+    
+    var greenButtonBeep : AVAudioPlayer?
+    var redButtonBeep :AVAudioPlayer?
+    var yellowButtonBeep :AVAudioPlayer?
+    var blueButtonBeep :AVAudioPlayer?
+    var audioAsset = AVURLAsset?()
+    
+    let greenButtonBeepSoundURL = NSBundle.mainBundle().URLForResource("Simon_Green", withExtension: "wav")!
+    let redButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Red", withExtension: "wav")!
+    let yellowButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
+    let blueButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
     
     
     // ===== Outlet declarations ===== //
@@ -34,12 +69,7 @@ class ViewController: UIViewController {
     
     // This is for debugging/prototyping purposes only and should be removed in
     // the final build.
-    @IBOutlet weak var ButtonPatternLabel: UILabel!
     
-    @IBOutlet weak var ScoreLabel: UILabel!
-    @IBOutlet weak var HighScoreLabel: UILabel!
-    
-    @IBOutlet weak var StartNewGameButton: UIButton!
     
     
     // ===== UIViewController overrides ===== //
@@ -47,6 +77,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        greenButton.setImage(GreenDefault, forState: .Normal)
+        redButton.setImage(RedDefault, forState: .Normal)
+        yellowButton.setImage(YellowDefault, forState: .Normal)
+        blueButton.setImage(BlueDefault, forState: .Normal)
+        
+        greenButtonBeep = PlayButtonBeep(greenButtonBeepSoundURL)
+        redButtonBeep = PlayButtonBeep(redButtonBeepSoundURL)
+        yellowButtonBeep = PlayButtonBeep(yellowButtonBeepSoundURL)
+        blueButtonBeep = PlayButtonBeep(blueButtonBeepSoundURL)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -84,48 +127,59 @@ class ViewController: UIViewController {
     
     
     @IBAction func RedButtonPress(sender: AnyObject) {
-        
+        let newAudioIndexPair = AudioIndexPair()
+        newAudioIndexPair.SoundFile = PickAudioFile(0)
+        newAudioIndexPair.Index = 0
+        HandleButtonPressEvent(newAudioIndexPair)
         if GameIsPlaying {
-            PatternAudioPlayer.removeAllItems()
-            AddButtonAudioToPatternPlayer(0)
-            PatternAudioPlayer.play()
-        
-            HandleInputPattern(0)
+            
+            
+            
+            HandleInputPattern(newAudioIndexPair)
         }
         
     }
     
     @IBAction func GreenButtonPress(sender: AnyObject) {
         
+        let newAudioIndexPair = AudioIndexPair()
+        newAudioIndexPair.SoundFile = PickAudioFile(1)
+        newAudioIndexPair.Index = 1
+        HandleButtonPressEvent(newAudioIndexPair)
         if GameIsPlaying {
-            PatternAudioPlayer.removeAllItems()
-            AddButtonAudioToPatternPlayer(1)
-            PatternAudioPlayer.play()
             
-            HandleInputPattern(1)
+            
+            
+            HandleInputPattern(newAudioIndexPair)
+            
         }
     }
     
     @IBAction func YellowButtonPress(sender: AnyObject) {
-        
+        let newAudioIndexPair = AudioIndexPair()
+        newAudioIndexPair.SoundFile = PickAudioFile(2)
+        newAudioIndexPair.Index = 2
+        HandleButtonPressEvent(newAudioIndexPair)
         if GameIsPlaying {
-            PatternAudioPlayer.removeAllItems()
-            AddButtonAudioToPatternPlayer(2)
-            PatternAudioPlayer.play()
             
-            HandleInputPattern(2)
+            
+            
+            HandleInputPattern(newAudioIndexPair)
+            
         }
         
     }
     
     @IBAction func BlueButtonPress(sender: AnyObject) {
         
+        let newAudioIndexPair = AudioIndexPair()
+        newAudioIndexPair.SoundFile = PickAudioFile(3)
+        newAudioIndexPair.Index = 3
+        HandleButtonPressEvent(newAudioIndexPair)
+        
         if GameIsPlaying {
-            PatternAudioPlayer.removeAllItems()
-            AddButtonAudioToPatternPlayer(3)
-            PatternAudioPlayer.play()
             
-            HandleInputPattern(3)
+            HandleInputPattern(newAudioIndexPair)
         }
         
     }
@@ -134,57 +188,49 @@ class ViewController: UIViewController {
     // =====
     
     
-    func AddButtonAudioToPatternPlayer(inputIndex: UInt32) {
+    func PickAudioFile(inputIndex: UInt32) ->NSURL {
         
         switch(inputIndex) {
             
             case 0 :
-                
-                let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Red", withExtension: "wav")!
-                let audioItem = AVPlayerItem(URL: buttonSoundFile)
-                PatternAudioPlayer.insertItem(audioItem, afterItem: nil)
-                break
+            
+                return  redButtonBeepSoundURL
             
             case 1 :
                 
-                let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Green", withExtension: "wav")!
-                let audioItem = AVPlayerItem(URL: buttonSoundFile)
-                PatternAudioPlayer.insertItem(audioItem, afterItem: nil)
-                break
+                return  greenButtonBeepSoundURL
+            
             
             case 2 :
                 
-                let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
-                let audioItem = AVPlayerItem(URL: buttonSoundFile)
-                PatternAudioPlayer.insertItem(audioItem, afterItem: nil)
-                break
+                return  yellowButtonBeepSoundURL
+            
             
             case 3 :
                 
-                let buttonSoundFile =  NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
-                let audioItem = AVPlayerItem(URL: buttonSoundFile)
-                PatternAudioPlayer.insertItem(audioItem, afterItem: nil)
-                break
+                return  blueButtonBeepSoundURL
+            
             
             default :
                 
-                // may need to play error noise
-                break
+                return  blueButtonBeepSoundURL
         }
         
     }
     
     
+    
+    
     // =====
     
     
-    func HandleInputPattern(input: UInt32) {
+    func HandleInputPattern(inputObect: AudioIndexPair) {
         
         // If we hit the right button
-        if ButtonPattern[InputIndex] == input.description {
-            
+        //if ButtonPattern[InputIndex] == inputObect.Index {
+        if AudioPatternArray[InputIndex].Index == inputObect.Index {
             // If we are at the end of the pattern
-            if InputIndex == ButtonPattern.count - 1 {
+            if InputIndex == AudioPatternArray.count - 1 {
                 
                 IncreaseScore(1)
                 
@@ -202,16 +248,20 @@ class ViewController: UIViewController {
                             self.InputIndex = 0
                     
                             // Extend ButtonPattern
-                            let newInt = UInt32(arc4random_uniform(4))
-                            self.IndexArray.append(newInt)
-                            self.ButtonPattern.append(newInt.description)
+                            let newAudioIndexPair = AudioIndexPair()
+                            newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
+                            newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
+                            self.AudioPatternArray.append(newAudioIndexPair)
+                            //let newInt = UInt32(arc4random_uniform(4))
+                            //self.IndexArray.append(newInt)
+                            //self.ButtonPattern.append(newInt.description)
                     
                             // update the label
-                            self.ButtonPatternLabel.text? += newInt.description
+                            self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
                     
                             // Animate Pattern
-                            self.PlayButtonPattern(&self.IndexArray)
-                    
+                            //self.PlayButtonPattern(&self.IndexArray)
+                            self.PlayButtonPattern()
                         }
                     )
                 }
@@ -260,9 +310,9 @@ class ViewController: UIViewController {
         // Reset our input and clear the pattern
         InputIndex = 0
         ButtonPatternLabel.text = ""
-        ButtonPattern.removeAll(keepCapacity: false)
-        IndexArray.removeAll(keepCapacity: false)
-        
+        //ButtonPattern.removeAll(keepCapacity: false)
+        //IndexArray.removeAll(keepCapacity: false)
+        AudioPatternArray.removeAll(keepCapacity: false)
         Score = 0
         ScoreLabel.text = "0"
         HighScoreLabel.text = HighScore.description
@@ -271,15 +321,21 @@ class ViewController: UIViewController {
         // length.
         for var i = 0; i < InitialPatternLength; i++ {
             
-            IndexArray.append(arc4random_uniform(4))
-            ButtonPattern.append(IndexArray[i].description)
+            let newAudioIndexPair = AudioIndexPair()
+            newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
+            newAudioIndexPair.SoundFile = PickAudioFile(newAudioIndexPair.Index)
+            AudioPatternArray.append(newAudioIndexPair)
+            //IndexArray.append(arc4random_uniform(4))
+            //ButtonPattern.append(IndexArray[i].description)
             
             // update the label
-            ButtonPatternLabel.text? += ButtonPattern[i]
+            //ButtonPatternLabel.text? += ButtonPattern[i]
+            ButtonPatternLabel.text? += newAudioIndexPair.Index.description
             
         }
         
-        PlayButtonPattern(&IndexArray)
+        //PlayButtonPattern(&IndexArray)
+        PlayButtonPattern()
         
     }
     
@@ -316,15 +372,21 @@ class ViewController: UIViewController {
                         self.InputIndex = 0
                         
                         // Extend ButtonPattern
-                        let newInt = UInt32(arc4random_uniform(4))
-                        self.IndexArray.append(newInt)
-                        self.ButtonPattern.append(newInt.description)
+                        let newAudioIndexPair = AudioIndexPair()
+                        newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
+                        newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
+                        self.AudioPatternArray.append(newAudioIndexPair)
+                        
+                        //let newInt = UInt32(arc4random_uniform(4))
+                        //self.IndexArray.append(newInt)
+                        //self.ButtonPattern.append(newInt.description)
                         
                         // update the label
-                        self.ButtonPatternLabel.text? += newInt.description
+                        self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
                         
                         // Animate Pattern
-                        self.PlayButtonPattern(&self.IndexArray)
+                        //self.PlayButtonPattern(&self.IndexArray)
+                        self.PlayButtonPattern()
                         
                         }
                     )
@@ -358,14 +420,81 @@ class ViewController: UIViewController {
         
     }
     
-    func PlayButtonPattern(inout someArray: [UInt32]) {
-        
-        for var i = 0; i < someArray.count; i++ {
-            AddButtonAudioToPatternPlayer(someArray[i])
-        }
-        
-        PatternAudioPlayer.play() // plays queue but we may want to refactor this so we can make buttons light up
-    
+    func PlayButtonBeep(nSURL: NSURL)->AVAudioPlayer{
+        var audioPlayer : AVAudioPlayer?
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: nSURL)
+        return audioPlayer!
     }
     
+    func HandleButtonPressEvent(audioIndexPair: AudioIndexPair)
+    {
+        audioAsset = AVURLAsset(URL: greenButtonBeepSoundURL)
+        let seconds = audioAsset?.duration
+        let delay = CMTimeGetSeconds(seconds!) * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        switch(audioIndexPair.Index){
+        case 0 :
+            redButtonBeep!.play()
+            
+            redButton.setImage(RedPressed, forState: .Normal)
+            dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+                self.redButton.setImage(self.RedDefault, forState: .Normal)
+            }
+            break
+            
+        case 1 :
+            greenButtonBeep!.play()
+            greenButton.setImage(GreenPressed, forState: .Normal)
+            
+            dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+                self.greenButton.setImage(self.GreenDefault, forState: .Normal)
+            }
+            
+            break
+            
+            
+        case 2 :
+            yellowButtonBeep!.play()
+            yellowButton.setImage(YellowPressed, forState: .Normal)
+            
+            dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+                self.yellowButton.setImage(self.YellowDefault, forState: .Normal)
+            }
+            
+            break
+            
+            
+        case 3 :
+            blueButtonBeep!.play()
+            blueButton.setImage(BluePressed, forState: .Normal)
+            
+            dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+                self.blueButton.setImage(self.BlueDefault, forState: .Normal)
+            }
+            
+            break
+            
+            
+        default :
+            
+            break
+        }
+        
+        
+    }
+    func startSequence() {
+        NSTimer.scheduledTimerWithTimeInterval(1.1, target: self, selector: "PlayButtonPattern:", userInfo: nil, repeats: false)
+        SimonSequenceIndex++
+    }
+    func PlayButtonPattern() {
+        if(SimonSequenceIndex<AudioPatternArray.count){
+            HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
+        }
+        startSequence()
+        
+    }
+        
 }
+
+    
+    

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C438D2F1BA490FE00EC4C2F /* AudioIndexPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C438D2E1BA490FE00EC4C2F /* AudioIndexPair.swift */; settings = {ASSET_TAGS = (); }; };
 		6F64FF021B995F3F0079EE2B /* Simon_Blue.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FEFE1B995F3F0079EE2B /* Simon_Blue.wav */; };
 		6F64FF031B995F3F0079EE2B /* Simon_Green.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FEFF1B995F3F0079EE2B /* Simon_Green.wav */; };
 		6F64FF041B995F3F0079EE2B /* Simon_Red.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6F64FF001B995F3F0079EE2B /* Simon_Red.wav */; };
@@ -14,22 +15,22 @@
 		6FDDCFDA1B9942AC00FD3DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFD91B9942AC00FD3DC9 /* AppDelegate.swift */; };
 		6FDDCFDD1B9942AC00FD3DC9 /* Simon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFDB1B9942AC00FD3DC9 /* Simon.xcdatamodeld */; };
 		6FDDCFDF1B9942AC00FD3DC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFDE1B9942AC00FD3DC9 /* ViewController.swift */; };
-		6FDDCFE21B9942AC00FD3DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FDDCFE01B9942AC00FD3DC9 /* Main.storyboard */; };
+		6FDDCFE21B9942AC00FD3DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FDDCFE01B9942AC00FD3DC9 /* Main.storyboard */; settings = {ASSET_TAGS = (scoreLabel, ); }; };
 		6FDDCFE41B9942AC00FD3DC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FDDCFE31B9942AC00FD3DC9 /* Images.xcassets */; };
 		6FDDCFE71B9942AC00FD3DC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FDDCFE51B9942AC00FD3DC9 /* LaunchScreen.xib */; };
 		6FDDCFF31B9942AC00FD3DC9 /* SimonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDCFF21B9942AC00FD3DC9 /* SimonTests.swift */; };
 		6FE995BA1BA3EC41001C3445 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995B91BA3EC3E001C3445 /* Lato-Semibold.ttf */; };
-		6FE995DC1BA3EEEE001C3445 /* Blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D11BA3EEEE001C3445 /* Blue@2x.png */; };
-		6FE995DD1BA3EEEE001C3445 /* BluePressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D21BA3EEEE001C3445 /* BluePressed@2x.png */; };
-		6FE995DE1BA3EEEE001C3445 /* Divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D31BA3EEEE001C3445 /* Divider@2x.png */; };
-		6FE995DF1BA3EEEE001C3445 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D41BA3EEEE001C3445 /* Green@2x.png */; };
-		6FE995E01BA3EEEE001C3445 /* GreenPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D51BA3EEEE001C3445 /* GreenPressed@2x.png */; };
-		6FE995E11BA3EEEE001C3445 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D61BA3EEEE001C3445 /* Red@2x.png */; };
-		6FE995E21BA3EEEE001C3445 /* RedPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D71BA3EEEE001C3445 /* RedPressed@2x.png */; };
-		6FE995E31BA3EEEE001C3445 /* ScoreBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D81BA3EEEE001C3445 /* ScoreBanner@2x.png */; };
-		6FE995E41BA3EEEE001C3445 /* StartButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D91BA3EEEE001C3445 /* StartButton@2x.png */; };
-		6FE995E51BA3EEEE001C3445 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995DA1BA3EEEE001C3445 /* Yellow@2x.png */; };
-		6FE995E61BA3EEEE001C3445 /* YellowPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995DB1BA3EEEE001C3445 /* YellowPressed@2x.png */; };
+		6FE995DC1BA3EEEE001C3445 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D11BA3EEEE001C3445 /* Blue.png */; };
+		6FE995DD1BA3EEEE001C3445 /* BluePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D21BA3EEEE001C3445 /* BluePressed.png */; };
+		6FE995DE1BA3EEEE001C3445 /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D31BA3EEEE001C3445 /* Divider.png */; };
+		6FE995DF1BA3EEEE001C3445 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D41BA3EEEE001C3445 /* Green.png */; };
+		6FE995E01BA3EEEE001C3445 /* GreenPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D51BA3EEEE001C3445 /* GreenPressed.png */; };
+		6FE995E11BA3EEEE001C3445 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D61BA3EEEE001C3445 /* Red.png */; };
+		6FE995E21BA3EEEE001C3445 /* RedPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D71BA3EEEE001C3445 /* RedPressed.png */; };
+		6FE995E31BA3EEEE001C3445 /* ScoreBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D81BA3EEEE001C3445 /* ScoreBanner.png */; };
+		6FE995E41BA3EEEE001C3445 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995D91BA3EEEE001C3445 /* StartButton.png */; };
+		6FE995E51BA3EEEE001C3445 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995DA1BA3EEEE001C3445 /* Yellow.png */; };
+		6FE995E61BA3EEEE001C3445 /* YellowPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995DB1BA3EEEE001C3445 /* YellowPressed.png */; };
 		6FE995E81BA3F16E001C3445 /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FE995E71BA3F16A001C3445 /* Lato-SemiboldItalic.ttf */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C438D2E1BA490FE00EC4C2F /* AudioIndexPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioIndexPair.swift; sourceTree = "<group>"; };
 		6F64FEFE1B995F3F0079EE2B /* Simon_Blue.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Blue.wav; sourceTree = "<group>"; };
 		6F64FEFF1B995F3F0079EE2B /* Simon_Green.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Green.wav; sourceTree = "<group>"; };
 		6F64FF001B995F3F0079EE2B /* Simon_Red.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Simon_Red.wav; sourceTree = "<group>"; };
@@ -60,17 +62,17 @@
 		6FDDCFF11B9942AC00FD3DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FDDCFF21B9942AC00FD3DC9 /* SimonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonTests.swift; sourceTree = "<group>"; };
 		6FE995B91BA3EC3E001C3445 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
-		6FE995D11BA3EEEE001C3445 /* Blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue@2x.png"; sourceTree = "<group>"; };
-		6FE995D21BA3EEEE001C3445 /* BluePressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluePressed@2x.png"; sourceTree = "<group>"; };
-		6FE995D31BA3EEEE001C3445 /* Divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Divider@2x.png"; sourceTree = "<group>"; };
-		6FE995D41BA3EEEE001C3445 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
-		6FE995D51BA3EEEE001C3445 /* GreenPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenPressed@2x.png"; sourceTree = "<group>"; };
-		6FE995D61BA3EEEE001C3445 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
-		6FE995D71BA3EEEE001C3445 /* RedPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedPressed@2x.png"; sourceTree = "<group>"; };
-		6FE995D81BA3EEEE001C3445 /* ScoreBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScoreBanner@2x.png"; sourceTree = "<group>"; };
-		6FE995D91BA3EEEE001C3445 /* StartButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartButton@2x.png"; sourceTree = "<group>"; };
-		6FE995DA1BA3EEEE001C3445 /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
-		6FE995DB1BA3EEEE001C3445 /* YellowPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowPressed@2x.png"; sourceTree = "<group>"; };
+		6FE995D11BA3EEEE001C3445 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
+		6FE995D21BA3EEEE001C3445 /* BluePressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePressed.png; sourceTree = "<group>"; };
+		6FE995D31BA3EEEE001C3445 /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Divider.png; sourceTree = "<group>"; };
+		6FE995D41BA3EEEE001C3445 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		6FE995D51BA3EEEE001C3445 /* GreenPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenPressed.png; sourceTree = "<group>"; };
+		6FE995D61BA3EEEE001C3445 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		6FE995D71BA3EEEE001C3445 /* RedPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedPressed.png; sourceTree = "<group>"; };
+		6FE995D81BA3EEEE001C3445 /* ScoreBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScoreBanner.png; sourceTree = "<group>"; };
+		6FE995D91BA3EEEE001C3445 /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
+		6FE995DA1BA3EEEE001C3445 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		6FE995DB1BA3EEEE001C3445 /* YellowPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowPressed.png; sourceTree = "<group>"; };
 		6FE995E71BA3F16A001C3445 /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,17 +108,17 @@
 		6FD31AFA1B9F38E800888F3D /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				6FE995D11BA3EEEE001C3445 /* Blue@2x.png */,
-				6FE995D21BA3EEEE001C3445 /* BluePressed@2x.png */,
-				6FE995D31BA3EEEE001C3445 /* Divider@2x.png */,
-				6FE995D41BA3EEEE001C3445 /* Green@2x.png */,
-				6FE995D51BA3EEEE001C3445 /* GreenPressed@2x.png */,
-				6FE995D61BA3EEEE001C3445 /* Red@2x.png */,
-				6FE995D71BA3EEEE001C3445 /* RedPressed@2x.png */,
-				6FE995D81BA3EEEE001C3445 /* ScoreBanner@2x.png */,
-				6FE995D91BA3EEEE001C3445 /* StartButton@2x.png */,
-				6FE995DA1BA3EEEE001C3445 /* Yellow@2x.png */,
-				6FE995DB1BA3EEEE001C3445 /* YellowPressed@2x.png */,
+				6FE995D11BA3EEEE001C3445 /* Blue.png */,
+				6FE995D21BA3EEEE001C3445 /* BluePressed.png */,
+				6FE995D31BA3EEEE001C3445 /* Divider.png */,
+				6FE995D41BA3EEEE001C3445 /* Green.png */,
+				6FE995D51BA3EEEE001C3445 /* GreenPressed.png */,
+				6FE995D61BA3EEEE001C3445 /* Red.png */,
+				6FE995D71BA3EEEE001C3445 /* RedPressed.png */,
+				6FE995D81BA3EEEE001C3445 /* ScoreBanner.png */,
+				6FE995D91BA3EEEE001C3445 /* StartButton.png */,
+				6FE995DA1BA3EEEE001C3445 /* Yellow.png */,
+				6FE995DB1BA3EEEE001C3445 /* YellowPressed.png */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -142,6 +144,7 @@
 		6FDDCFD61B9942AC00FD3DC9 /* Simon */ = {
 			isa = PBXGroup;
 			children = (
+				1C438D2E1BA490FE00EC4C2F /* AudioIndexPair.swift */,
 				6FE995B81BA3EC32001C3445 /* Fonts */,
 				6FD31AFA1B9F38E800888F3D /* Graphics */,
 				6F64FEFD1B995ECA0079EE2B /* Audio */,
@@ -234,6 +237,9 @@
 		6FDDCFCC1B9942AC00FD3DC9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					scoreLabel,
+				);
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = CS4153AppDevTeamBlue;
@@ -272,24 +278,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FE995BA1BA3EC41001C3445 /* Lato-Semibold.ttf in Resources */,
-				6FE995E31BA3EEEE001C3445 /* ScoreBanner@2x.png in Resources */,
+				6FE995E31BA3EEEE001C3445 /* ScoreBanner.png in Resources */,
 				6FDDCFE21B9942AC00FD3DC9 /* Main.storyboard in Resources */,
-				6FE995DF1BA3EEEE001C3445 /* Green@2x.png in Resources */,
-				6FE995E41BA3EEEE001C3445 /* StartButton@2x.png in Resources */,
+				6FE995DF1BA3EEEE001C3445 /* Green.png in Resources */,
+				6FE995E41BA3EEEE001C3445 /* StartButton.png in Resources */,
 				6FE995E81BA3F16E001C3445 /* Lato-SemiboldItalic.ttf in Resources */,
 				6FDDCFE71B9942AC00FD3DC9 /* LaunchScreen.xib in Resources */,
-				6FE995DC1BA3EEEE001C3445 /* Blue@2x.png in Resources */,
+				6FE995DC1BA3EEEE001C3445 /* Blue.png in Resources */,
 				6FDDCFE41B9942AC00FD3DC9 /* Images.xcassets in Resources */,
-				6FE995DE1BA3EEEE001C3445 /* Divider@2x.png in Resources */,
-				6FE995E61BA3EEEE001C3445 /* YellowPressed@2x.png in Resources */,
+				6FE995DE1BA3EEEE001C3445 /* Divider.png in Resources */,
+				6FE995E61BA3EEEE001C3445 /* YellowPressed.png in Resources */,
 				6F64FF041B995F3F0079EE2B /* Simon_Red.wav in Resources */,
 				6F64FF051B995F3F0079EE2B /* Simon_Yellow.wav in Resources */,
-				6FE995E01BA3EEEE001C3445 /* GreenPressed@2x.png in Resources */,
-				6FE995E11BA3EEEE001C3445 /* Red@2x.png in Resources */,
-				6FE995DD1BA3EEEE001C3445 /* BluePressed@2x.png in Resources */,
+				6FE995E01BA3EEEE001C3445 /* GreenPressed.png in Resources */,
+				6FE995E11BA3EEEE001C3445 /* Red.png in Resources */,
+				6FE995DD1BA3EEEE001C3445 /* BluePressed.png in Resources */,
 				6F64FF031B995F3F0079EE2B /* Simon_Green.wav in Resources */,
-				6FE995E21BA3EEEE001C3445 /* RedPressed@2x.png in Resources */,
-				6FE995E51BA3EEEE001C3445 /* Yellow@2x.png in Resources */,
+				6FE995E21BA3EEEE001C3445 /* RedPressed.png in Resources */,
+				6FE995E51BA3EEEE001C3445 /* Yellow.png in Resources */,
 				6F64FF021B995F3F0079EE2B /* Simon_Blue.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FDDCFDF1B9942AC00FD3DC9 /* ViewController.swift in Sources */,
+				1C438D2F1BA490FE00EC4C2F /* AudioIndexPair.swift in Sources */,
 				6FDDCFDD1B9942AC00FD3DC9 /* Simon.xcdatamodeld in Sources */,
 				6FDDCFDA1B9942AC00FD3DC9 /* AppDelegate.swift in Sources */,
 			);
