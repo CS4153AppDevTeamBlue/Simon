@@ -487,10 +487,13 @@ class ViewController: UIViewController {
         SimonSequenceIndex++
     }
     func PlayButtonPattern() {
-        if(SimonSequenceIndex<AudioPatternArray.count){
-            HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
-        }
-        startSequence()
+        //TODO get the timing sequence to play the pattern without crashing
+        
+        HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
+        //if(SimonSequenceIndex<AudioPatternArray.count){
+            
+        //}
+        //startSequence()
         
     }
         
