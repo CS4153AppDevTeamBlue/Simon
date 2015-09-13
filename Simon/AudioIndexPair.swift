@@ -12,7 +12,7 @@ import AVFoundation
 public class AudioIndexPair {
     
     
-    var SoundFile : NSURL?  //somethin
+    var SoundFile : NSURL?  //file location of wav file for respective button press
     var Index = UInt32()
     
     
