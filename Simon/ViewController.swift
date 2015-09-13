@@ -63,6 +63,8 @@ class ViewController: UIViewController {
     let yellowButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
     let blueButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
     
+    var timer = NSTimer()
+    
     
     // ===== Outlet declarations ===== //
     
@@ -428,10 +430,11 @@ class ViewController: UIViewController {
     
     func HandleButtonPressEvent(audioIndexPair: AudioIndexPair)
     {
-        audioAsset = AVURLAsset(URL: greenButtonBeepSoundURL)
+        audioAsset = AVURLAsset(URL: blueButtonBeepSoundURL)
         let seconds = audioAsset?.duration
         let delay = CMTimeGetSeconds(seconds!) * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay/2))
+        
         switch(audioIndexPair.Index){
         case 0 :
             redButtonBeep!.play()
@@ -482,18 +485,29 @@ class ViewController: UIViewController {
         
         
     }
-    func startSequence() {
-        NSTimer.scheduledTimerWithTimeInterval(1.1, target: self, selector: "PlayButtonPattern:", userInfo: nil, repeats: false)
-        SimonSequenceIndex++
-    }
-    func PlayButtonPattern() {
-        //TODO get the timing sequence to play the pattern without crashing
+    func startSequence(i:Int) {
+        audioAsset = AVURLAsset(URL: blueButtonBeepSoundURL)
+        let seconds = audioAsset?.duration
+        let delay = CMTimeGetSeconds(seconds!) * Double(UInt64(i)*NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
-        HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
-        //if(SimonSequenceIndex<AudioPatternArray.count){
+        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
             
-        //}
-        //startSequence()
+            self.HandleButtonPressEvent(self.AudioPatternArray[i])
+            
+        }
+        
+        
+    }
+    
+    func PlayButtonPattern() {
+        
+        
+        for(var i=0; i<AudioPatternArray.count;i++){
+            startSequence(i)
+        }
+        
+        
         
     }
         
