@@ -229,31 +229,32 @@ class ViewController: UIViewController {
                 //Check if won?
                 if( Score < 13 || ContinuePlaying) {
                 
-                    let seconds = 1.5
+                    let seconds = 1.0
                     let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
                     let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                 
                     dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     
-                            // here code perfomed with delay
-                            // Reset input index
-                            self.InputIndex = 0
-                    
-                            // Extend ButtonPattern
-                            let newAudioIndexPair = AudioIndexPair()
-                            newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
-                            newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
-                            self.AudioPatternArray.append(newAudioIndexPair)
+                        // here code perfomed with delay
+                        // Reset input index
+                        self.InputIndex = 0
                         
-                    
-                            // update the label
-                            self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
-                    
-                            // Animate Pattern
-                            self.SimonSequenceIndex = 0
-                            self.PlayButtonPattern()
+                        // Extend ButtonPattern
+                        let newAudioIndexPair = AudioIndexPair()
+                        newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
+                        newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
+                        self.AudioPatternArray.append(newAudioIndexPair)
+                        
+                        
+                        // update the label
+                        self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
+                        
+                        // Animate Pattern
+                        self.SimonSequenceIndex = 0
+                        self.PlayButtonPattern()
                         }
                     )
+                    
                 }
                 
                 // If we are not at the end of the pattern
