@@ -47,6 +47,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="Blue.png"/>
                                 <state key="highlighted" image="BluePressed.png"/>
                                 <connections>
                                     <action selector="BlueButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iIp-kd-QDm"/>
@@ -59,6 +60,7 @@
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="Yellow.png"/>
                                 <state key="highlighted" image="YellowPressed.png"/>
                                 <connections>
                                     <action selector="YellowButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Aaa-S4-C7B"/>
@@ -71,6 +73,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="Red.png"/>
                                 <state key="highlighted" image="RedPressed.png"/>
                                 <connections>
                                     <action selector="RedButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MM2-QH-g93"/>
@@ -132,6 +135,7 @@
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="Green.png"/>
                                 <state key="highlighted" image="GreenPressed.png"/>
                                 <connections>
                                     <action selector="GreenButtonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="E2T-p2-DWm"/>

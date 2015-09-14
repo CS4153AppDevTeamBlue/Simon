@@ -448,18 +448,18 @@ class ViewController: UIViewController {
         case 0 :
             redButtonBeep!.play()
             
-            redButton.setImage(RedPressed, forState: .Normal)
+            redButton.setImage(RedPressed, forState: .Disabled)
             dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-                self.redButton.setImage(self.RedDefault, forState: .Normal)
+                self.redButton.setImage(self.RedDefault, forState: .Disabled)
             }
             break
             
         case 1 :
             greenButtonBeep!.play()
-            greenButton.setImage(GreenPressed, forState: .Normal)
+            greenButton.setImage(GreenPressed, forState: .Disabled)
             
             dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-                self.greenButton.setImage(self.GreenDefault, forState: .Normal)
+                self.greenButton.setImage(self.GreenDefault, forState: .Disabled)
             }
             
             break
@@ -467,10 +467,10 @@ class ViewController: UIViewController {
             
         case 2 :
             yellowButtonBeep!.play()
-            yellowButton.setImage(YellowPressed, forState: .Normal)
+            yellowButton.setImage(YellowPressed, forState: .Disabled)
             
             dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-                self.yellowButton.setImage(self.YellowDefault, forState: .Normal)
+                self.yellowButton.setImage(self.YellowDefault, forState: .Disabled)
             }
             
             break
@@ -478,10 +478,10 @@ class ViewController: UIViewController {
             
         case 3 :
             blueButtonBeep!.play()
-            blueButton.setImage(BluePressed, forState: .Normal)
+            blueButton.setImage(BluePressed, forState: .Disabled)
             
             dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-                self.blueButton.setImage(self.BlueDefault, forState: .Normal)
+                self.blueButton.setImage(self.BlueDefault, forState: .Disabled)
             }
             
             break
