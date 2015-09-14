@@ -116,8 +116,7 @@ class ViewController: UIViewController {
     // ===== Button press handling ===== //
     
     
-    @IBAction func RedButtonPress(sender: AnyObject) {
-        
+    @IBAction func RedButtonPress(sender: UIButton) {
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(0)
         newAudioIndexPair.Index = 0
@@ -125,6 +124,7 @@ class ViewController: UIViewController {
         HandleButtonPressEvent(newAudioIndexPair)
         
         if GameIsPlaying {
+            
             HandleInputPattern(newAudioIndexPair)
         }
         
