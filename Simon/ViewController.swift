@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var redButton: UIButton!
     @IBOutlet weak var yellowButton: UIButton!
     @IBOutlet weak var blueButton: UIButton!
-    @IBOutlet weak var ButtonPatternLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var HighScoreLabel: UILabel!
     @IBOutlet weak var StartNewGameButton: UIButton!
@@ -245,10 +244,6 @@ class ViewController: UIViewController {
                         newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
                         self.AudioPatternArray.append(newAudioIndexPair)
                         
-                        
-                        // update the label
-                        self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
-                        
                         // Animate Pattern
                         self.SimonSequenceIndex = 0
                         self.PlayButtonPattern()
@@ -300,7 +295,6 @@ class ViewController: UIViewController {
         
         // Reset our input and clear the pattern
         InputIndex = 0
-        ButtonPatternLabel.text = ""
         
         AudioPatternArray.removeAll(keepCapacity: false)
         Score = 0
@@ -315,11 +309,6 @@ class ViewController: UIViewController {
             newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
             newAudioIndexPair.SoundFile = PickAudioFile(newAudioIndexPair.Index)
             AudioPatternArray.append(newAudioIndexPair)
-           
-            
-            // update the label
-            
-            ButtonPatternLabel.text? += newAudioIndexPair.Index.description
             
         }
         self.SimonSequenceIndex = 0
@@ -365,12 +354,6 @@ class ViewController: UIViewController {
                         newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
                         self.AudioPatternArray.append(newAudioIndexPair)
                         
-                        //let newInt = UInt32(arc4random_uniform(4))
-                        //self.IndexArray.append(newInt)
-                        //self.ButtonPattern.append(newInt.description)
-                        
-                        // update the label
-                        self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
                         
                         // Animate Pattern
                         //self.PlayButtonPattern(&self.IndexArray)

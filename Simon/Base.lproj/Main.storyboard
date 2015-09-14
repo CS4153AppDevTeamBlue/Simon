@@ -87,25 +87,11 @@
                                     <action selector="StartGameBuittonPress:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qmg-8M-f6s"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbb-0o-AP8" userLabel="Button Pattern Label">
-                                <rect key="frame" x="146" y="638" width="213" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnn-Js-51W" userLabel="High Score Label Indicator">
                                 <rect key="frame" x="89" y="589" width="110" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Button Pattern: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-qe-Luz" userLabel="Button Pattern Indicator">
-                                <rect key="frame" x="16" y="638" width="122" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-pN-zYB" userLabel="Score Label Indicator">
@@ -150,7 +136,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="ButtonPatternLabel" destination="hbb-0o-AP8" id="vmQ-FR-rss"/>
                         <outlet property="HighScoreLabel" destination="n7J-mc-17p" id="Rtq-pN-bTJ"/>
                         <outlet property="ScoreLabel" destination="oxs-yZ-KZP" id="Xcg-t7-I2K"/>
                         <outlet property="StartNewGameButton" destination="rT1-2b-Osd" id="sML-L4-jji"/>
