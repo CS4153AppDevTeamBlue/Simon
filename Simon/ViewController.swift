@@ -115,8 +115,26 @@ class ViewController: UIViewController {
     
     // ===== Button press handling ===== //
     
+    func StopButtons() {
+        redButtonBeep?.pause()
+        redButtonBeep?.currentTime = 0
+        redButton.setImage(RedDefault, forState: UIControlState.Normal)
+        greenButtonBeep?.pause()
+        greenButtonBeep?.currentTime = 0
+        greenButton.setImage(GreenDefault, forState: UIControlState.Normal)
+        yellowButtonBeep?.pause()
+        yellowButtonBeep?.currentTime = 0
+        yellowButton.setImage(YellowDefault, forState: UIControlState.Normal)
+        blueButtonBeep?.pause()
+        blueButtonBeep?.currentTime = 0
+        blueButton.setImage(BlueDefault, forState: UIControlState.Normal)
+        
+    }
+    
     
     @IBAction func RedButtonPress(sender: UIButton) {
+        StopButtons()
+        
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(0)
         newAudioIndexPair.Index = 0
@@ -131,6 +149,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func GreenButtonPress(sender: UIButton) {
+        StopButtons()
         
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(1)
@@ -146,6 +165,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func YellowButtonPress(sender: UIButton) {
+        StopButtons()
+        
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(2)
         newAudioIndexPair.Index = 2
@@ -161,6 +182,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func BlueButtonPress(sender: UIButton) {
+        StopButtons()
         
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(3)
