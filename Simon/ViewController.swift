@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     // ===== Start New Game button (Entry point) ===== //
     
     
-    @IBAction func StartGameBuittonPress(sender: AnyObject) {
+    @IBAction func StartGameBuittonPress(sender: UIButton) {
         
         GameIsPlaying = true
         
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func GreenButtonPress(sender: AnyObject) {
+    @IBAction func GreenButtonPress(sender: UIButton) {
         
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(1)
@@ -145,7 +145,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func YellowButtonPress(sender: AnyObject) {
+    @IBAction func YellowButtonPress(sender: UIButton) {
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(2)
         newAudioIndexPair.Index = 2
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func BlueButtonPress(sender: AnyObject) {
+    @IBAction func BlueButtonPress(sender: UIButton) {
         
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(3)
