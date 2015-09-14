@@ -504,6 +504,9 @@ class ViewController: UIViewController {
     }
     
     func CountUp(){
+        if InputIndex != 0 {
+            return
+        }
         
         if (SimonSequenceIndex >= AudioPatternArray.count){return}
         
