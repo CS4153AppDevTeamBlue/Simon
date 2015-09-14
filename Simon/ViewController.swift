@@ -23,8 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var HighScoreLabel: UILabel!
     @IBOutlet weak var StartNewGameButton: UIButton!
     
-    //var ButtonPattern = [String]()
-    var IndexArray = [UInt32]()  //may be able to get rid of this
+    var mytimer : NSTimer?
     var GameIsPlaying = false;
     var ContinuePlaying = false;
     
@@ -33,9 +32,9 @@ class ViewController: UIViewController {
     var Score = 0
     var HighScore = 0
     
-    let InitialPatternLength = 1;
+    let InitialPatternLength = 1
     
-    let PatternAudioPlayer = AVQueuePlayer() // may be able to get rid of this
+    
     var aVPlayer : AVPlayer!
     var AudioPatternArray = [AudioIndexPair()]
     
@@ -62,17 +61,6 @@ class ViewController: UIViewController {
     let redButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Red", withExtension: "wav")!
     let yellowButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Yellow", withExtension: "wav")!
     let blueButtonBeepSoundURL =   NSBundle.mainBundle().URLForResource("Simon_Blue", withExtension: "wav")!
-    
-    var timer = NSTimer()
-    
-    
-    // ===== Outlet declarations ===== //
-    
-    
-    // This is for debugging/prototyping purposes only and should be removed in
-    // the final build.
-    
-    
     
     // ===== UIViewController overrides ===== //
     
@@ -129,14 +117,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func RedButtonPress(sender: AnyObject) {
+        
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(0)
         newAudioIndexPair.Index = 0
+        
         HandleButtonPressEvent(newAudioIndexPair)
+        
         if GameIsPlaying {
-            
-            
-            
             HandleInputPattern(newAudioIndexPair)
         }
         
@@ -147,10 +135,10 @@ class ViewController: UIViewController {
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(1)
         newAudioIndexPair.Index = 1
+        
         HandleButtonPressEvent(newAudioIndexPair)
+        
         if GameIsPlaying {
-            
-            
             
             HandleInputPattern(newAudioIndexPair)
             
@@ -161,10 +149,10 @@ class ViewController: UIViewController {
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(2)
         newAudioIndexPair.Index = 2
+        
         HandleButtonPressEvent(newAudioIndexPair)
+        
         if GameIsPlaying {
-            
-            
             
             HandleInputPattern(newAudioIndexPair)
             
@@ -177,6 +165,7 @@ class ViewController: UIViewController {
         let newAudioIndexPair = AudioIndexPair()
         newAudioIndexPair.SoundFile = PickAudioFile(3)
         newAudioIndexPair.Index = 3
+        
         HandleButtonPressEvent(newAudioIndexPair)
         
         if GameIsPlaying {
@@ -229,8 +218,9 @@ class ViewController: UIViewController {
     func HandleInputPattern(inputObect: AudioIndexPair) {
         
         // If we hit the right button
-        //if ButtonPattern[InputIndex] == inputObect.Index {
+        
         if AudioPatternArray[InputIndex].Index == inputObect.Index {
+            
             // If we are at the end of the pattern
             if InputIndex == AudioPatternArray.count - 1 {
                 
@@ -254,15 +244,13 @@ class ViewController: UIViewController {
                             newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
                             newAudioIndexPair.SoundFile = self.PickAudioFile(newAudioIndexPair.Index)
                             self.AudioPatternArray.append(newAudioIndexPair)
-                            //let newInt = UInt32(arc4random_uniform(4))
-                            //self.IndexArray.append(newInt)
-                            //self.ButtonPattern.append(newInt.description)
+                        
                     
                             // update the label
                             self.ButtonPatternLabel.text? += newAudioIndexPair.Index.description
                     
                             // Animate Pattern
-                            //self.PlayButtonPattern(&self.IndexArray)
+                            self.SimonSequenceIndex = 0
                             self.PlayButtonPattern()
                         }
                     )
@@ -290,7 +278,7 @@ class ViewController: UIViewController {
                     self.StartNewGameButton.hidden = false
                     self.Score = 0
                     self.ScoreLabel.text = "0"
-                    //self.ResetButtonPattern()
+                    
                     
                 case .Cancel:
                     print("cancel")
@@ -312,8 +300,7 @@ class ViewController: UIViewController {
         // Reset our input and clear the pattern
         InputIndex = 0
         ButtonPatternLabel.text = ""
-        //ButtonPattern.removeAll(keepCapacity: false)
-        //IndexArray.removeAll(keepCapacity: false)
+        
         AudioPatternArray.removeAll(keepCapacity: false)
         Score = 0
         ScoreLabel.text = "0"
@@ -327,16 +314,14 @@ class ViewController: UIViewController {
             newAudioIndexPair.Index = UInt32(arc4random_uniform(4))
             newAudioIndexPair.SoundFile = PickAudioFile(newAudioIndexPair.Index)
             AudioPatternArray.append(newAudioIndexPair)
-            //IndexArray.append(arc4random_uniform(4))
-            //ButtonPattern.append(IndexArray[i].description)
+           
             
             // update the label
-            //ButtonPatternLabel.text? += ButtonPattern[i]
+            
             ButtonPatternLabel.text? += newAudioIndexPair.Index.description
             
         }
-        
-        //PlayButtonPattern(&IndexArray)
+        self.SimonSequenceIndex = 0
         PlayButtonPattern()
         
     }
@@ -388,6 +373,7 @@ class ViewController: UIViewController {
                         
                         // Animate Pattern
                         //self.PlayButtonPattern(&self.IndexArray)
+                        self.SimonSequenceIndex = 0
                         self.PlayButtonPattern()
                         
                         }
@@ -430,7 +416,7 @@ class ViewController: UIViewController {
     
     func HandleButtonPressEvent(audioIndexPair: AudioIndexPair)
     {
-        audioAsset = AVURLAsset(URL: blueButtonBeepSoundURL)
+        audioAsset = AVURLAsset(URL: audioIndexPair.SoundFile!)
         let seconds = audioAsset?.duration
         let delay = CMTimeGetSeconds(seconds!) * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay/2))
@@ -485,33 +471,25 @@ class ViewController: UIViewController {
         
         
     }
-    func startSequence(i:Int) {
-        audioAsset = AVURLAsset(URL: blueButtonBeepSoundURL)
-        let seconds = audioAsset?.duration
-        let delay = CMTimeGetSeconds(seconds!) * Double(UInt64(i)*NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            
-            self.HandleButtonPressEvent(self.AudioPatternArray[i])
-            
-        }
-        
-        
-    }
     
     func PlayButtonPattern() {
         
-        
-        for(var i=0; i<AudioPatternArray.count;i++){
-            startSequence(i)
-        }
-        
-        
+        let duration = 0.92
+        mytimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector:"CountUp", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(self.mytimer!, forMode: NSRunLoopCommonModes)
         
     }
+    
+    func CountUp(){
         
-}
+        if (SimonSequenceIndex >= AudioPatternArray.count){return}
+        
+        HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
+        PlayButtonPattern()
+        SimonSequenceIndex++
+
+    }
 
     
     
+}
