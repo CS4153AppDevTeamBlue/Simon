@@ -496,7 +496,6 @@ class ViewController: UIViewController {
     }
     
     func PlayButtonPattern() {
-        
         let duration = 0.92
         mytimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector:"CountUp", userInfo: nil, repeats: false)
         NSRunLoop.currentRunLoop().addTimer(self.mytimer!, forMode: NSRunLoopCommonModes)
@@ -504,11 +503,22 @@ class ViewController: UIViewController {
     }
     
     func CountUp(){
-        if InputIndex != 0 {
+        //if InputIndex != 0 {
+        //    return
+        //}
+        
+        redButton.enabled = false
+        greenButton.enabled = false
+        yellowButton.enabled = false
+        blueButton.enabled = false
+        
+        if (SimonSequenceIndex >= AudioPatternArray.count) {
+            redButton.enabled = true
+            greenButton.enabled = true
+            yellowButton.enabled = true
+            blueButton.enabled = true
             return
         }
-        
-        if (SimonSequenceIndex >= AudioPatternArray.count){return}
         
         HandleButtonPressEvent(AudioPatternArray[SimonSequenceIndex])
         PlayButtonPattern()
